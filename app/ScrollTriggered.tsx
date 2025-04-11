@@ -4,11 +4,12 @@ import { motion, Variants } from "framer-motion";
 
 export default function ScrollTriggered() {
   return (
-    <div style={container}>
+    <motion.div style={container} 
+    className="flex flex-col md:flex-row ">
       {food.map(([emoji, hueA, hueB], i) => (
         <Card key={emoji} i={i} emoji={emoji} hueA={hueA} hueB={hueB} />
       ))}
-    </div>
+    </motion.div>
   );
 }
 
