@@ -4,9 +4,13 @@ import { motion, Variants } from "framer-motion";
 
 export default function ScrollTriggered() {
   return (
-    <div style={container} 
-    className="flex flex-col md:flex-row justify-evenly items-center gap-8">
+    <div
+  style={container}
+  className="flex flex-col md:flex-row items-center md:justify-evenly gap-30"
 
+>
+
+  
       {food.map(([emoji, hueA, hueB], i) => (
         <Card key={emoji} i={i} emoji={emoji} hueA={hueA} hueB={hueB} />
       ))}
@@ -30,7 +34,7 @@ function Card({ emoji, hueA, hueB }: CardProps) {
       style={cardContainer}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="flex flex-row"
+      className="relative"
     >
       <motion.div
         style={{
@@ -73,14 +77,16 @@ const cardVariants: Variants = {
 
 const hue = (h: number) => `hsl(${h}, 100%, 50%)`;
 
-// 🧠 Styles
+// 💅 Styles
 const container: React.CSSProperties = {
-  marginTop:"400px",
+  marginTop: "400px",
+  marginBottom: "200px",
   width: "100%",
-  display: "flex",
-  flexDirection:"row",
-  justifyContent: "space-evenly",
+  marginLeft: "auto",
+  marginRight: "auto",
 };
+
+
 
 const cardContainer: React.CSSProperties = {
   position: "relative",
@@ -105,9 +111,9 @@ const splash: React.CSSProperties = {
 };
 
 const card: React.CSSProperties = {
-  fontSize: 64,
-  width: 110,
-  height: 110,
+  fontSize: 48,
+  width: 90,
+  height: 90,
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
