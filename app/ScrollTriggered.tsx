@@ -4,14 +4,10 @@ import { motion, Variants } from "framer-motion";
 
 export default function ScrollTriggered() {
   return (
-    <div
+<div
   style={container}
-  className="flex flex-col md:flex-row items-center md:justify-evenly gap-30"
-
->
-
-  
-      {food.map(([emoji, hueA, hueB], i) => (
+  className="flex flex-col md:flex-row items-center md:justify-evenly gap-30">
+{food.map(([emoji, hueA, hueB], i) => (
         <Card key={emoji} i={i} emoji={emoji} hueA={hueA} hueB={hueB} />
       ))}
     </div>
@@ -112,8 +108,8 @@ const splash: React.CSSProperties = {
 
 const card: React.CSSProperties = {
   fontSize: 48,
-  width: 90,
-  height: 90,
+  width: 110,
+  height: 110,
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
