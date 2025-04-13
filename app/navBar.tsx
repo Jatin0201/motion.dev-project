@@ -49,22 +49,17 @@ export default function Navbar() {
 
                {/* Center: Search Bar */}
                <form
-                  className="flex items-center bg-white/20 backdrop-blur-md rounded-xl p-2 w-full sm:w- md:w-1/3 lg:w-1/4"
+                  className="flex items-center bg-white/20 backdrop-blur-md rounded-xl p-2 w-full sm:w-1/3 md:w-1/3 lg:w-1/4"
                   onSubmit={handleSearchSubmit}
                >
                   <input
                      type="text"
                      placeholder="Search..."
-                     className="w-full px-4 py-2 bg-transparent text-blue-500 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                     className="w-full px-4 py-2 bg-transparent text-blue-500 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                      value={searchTerm}
                      onChange={handleSearchChange}
                   />
-                  <button
-                     type="submit"
-                     className="bg-blue-600 px-4 py-2 rounded-r-lg text-white hover:bg-blue-500 focus:outline-none"
-                  >
-                     Search
-                  </button>
+                 
                </form>
 
                {/* Right Side: Profile / Login */}
