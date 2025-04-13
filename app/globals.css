@@ -124,3 +124,58 @@
     @apply bg-background text-foreground;
   }
 }
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(
+      ellipse at top left,
+      rgba(255, 255, 255, 0.05),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse at bottom right,
+      rgba(255, 255, 255, 0.08),
+      transparent 70%
+    ),
+    #000000; /* Deep black base */
+  background-blend-mode: screen;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+/* Default (Light Theme) */
+:root {
+  --bg-color: #ffffff; /* light background */
+  --navbar-bg: #ffffff; /* light navbar background */
+  --navbar-text: #000000; /* text color */
+}
+
+/* Dark Theme */
+body.dark {
+  --bg-color: #000000; /* dark background */
+  --navbar-bg: #1a1a1a; /* dark navbar background */
+  --navbar-text: #ffffff; /* text color */
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--navbar-text);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav {
+  background-color: var(--navbar-bg);
+  color: var(--navbar-text);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav a {
+  color: var(--navbar-text);
+}
+
+nav a:hover {
+  color: var(--navbar-text); /* or change hover color */
+}
+
+
