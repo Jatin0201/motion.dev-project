@@ -4,13 +4,74 @@ import { motion, Variants } from "framer-motion";
 
 export default function ScrollTriggered() {
    return (
-      <div
-         style={container}
-         className="flex flex-col md:flex-row items-center md:justify-evenly gap-30"
-      >
-         {food.map(([emoji, hueA, hueB], i) => (
-            <Card key={emoji} i={i} emoji={emoji} hueA={hueA} hueB={hueB} />
-         ))}
+      <div className="relative w-full">
+         {/* 🚀 Flow Source Div */}
+         <div className="relative z-10 flex justify-center mt-20">
+            <div className="bg-sky-500 text-white px-4 py-2 rounded shadow-md">
+               🚀 Flow Source
+            </div>
+         </div>
+
+         {/* SVG Arrows from Flow to Cards (only on md+ screens) */}
+         <div className=" text-black dark:text-white hidden md:block">
+            <svg
+               className="absolute top-[110px] left-0 w-full h-[300px] z-0 pointer-events-none"
+               xmlns="http://www.w3.org/2000/svg"
+            >
+               <defs>
+                  <marker
+                     id="arrowhead"
+                     markerWidth="10"
+                     markerHeight="7"
+                     refX="0"
+                     refY="3.5"
+                     orient="auto"
+                     
+                  >
+                     <polygon points="0 0, 10 3.5, 0 7" className="fill-black dark:fill-white"  />
+                  </marker>
+               </defs>
+
+               {/* Arrows to each card */}
+               <line
+                  x1="50%"
+                  y1="0"
+                  x2="25%"
+                  y2="100"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  markerEnd="url(#arrowhead)"
+               />
+               <line
+                  x1="50%"
+                  y1="0"
+                  x2="50%"
+                  y2="100"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  markerEnd="url(#arrowhead)"
+               />
+               <line
+                  x1="50%"
+                  y1="0"
+                  x2="75%"
+                  y2="100"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  markerEnd="url(#arrowhead)"
+               />
+            </svg>
+         </div>
+
+         {/* 🃏 Cards */}
+         <div
+            style={container}
+            className="flex flex-col md:flex-row items-center md:justify-evenly gap-60 z-10 relative"
+         >
+            {food.map(([emoji, hueA, hueB], i) => (
+               <Card key={emoji} i={i} emoji={emoji} hueA={hueA} hueB={hueB} />
+            ))}
+         </div>
       </div>
    );
 }
@@ -43,6 +104,7 @@ function Card({ emoji, hueA, hueB, i }: CardProps) {
             <>
                {/* White Glow (Blurred Behind) */}
                <motion.div
+                  className="dark:bg-white bg-black"
                   style={{
                      position: "absolute",
                      top: "-60px",
@@ -50,11 +112,11 @@ function Card({ emoji, hueA, hueB, i }: CardProps) {
                      right: "-60px",
                      bottom: "-60px",
                      borderRadius: 60,
-                     background: "#ffffff",
+
                      opacity: isHovered ? 0.2 : 0.5,
                      filter: isHovered
-                        ? "blur(80px) brightness(1)"
-                        : "blur(120px) brightness(1.8)",
+                        ? "blur(30px) brightness(1)"
+                        : "blur(10px) brightness(2)",
                      zIndex: 0,
                   }}
                />
@@ -84,11 +146,11 @@ function Card({ emoji, hueA, hueB, i }: CardProps) {
                      right: "-60px",
                      bottom: "-60px",
                      borderRadius: 60,
-                     background: glow,
-                     opacity: isHovered ? 0.25 : 0.4,
+                     background: cardBg,
+                     opacity: isHovered ? 0.5 : 0.6,
                      filter: isHovered
-                        ? "blur(60px) brightness(1.1)"
-                        : "blur(90px) brightness(1.6)",
+                        ? "blur(40px) brightness(1.1)"
+                        : "blur(10px) brightness(2)",
                      zIndex: 0,
                   }}
                />
@@ -97,7 +159,7 @@ function Card({ emoji, hueA, hueB, i }: CardProps) {
                <motion.div
                   style={{
                      ...splash,
-                     background: glow,
+                     background: cardBg,
                      transform: isHovered ? "scale(0.95)" : "scale(1)",
                      filter: "brightness(0.9)",
                      opacity: isHovered ? 0.3 : 0.6,
@@ -111,7 +173,7 @@ function Card({ emoji, hueA, hueB, i }: CardProps) {
          <motion.div
             style={{
                ...card,
-               background: cardBg,
+               background: glow,
                boxShadow: `0 0 60px ${glow}`,
                zIndex: 2,
             }}
@@ -186,7 +248,7 @@ const card: React.CSSProperties = {
    justifyContent: "center",
    alignItems: "center",
    borderRadius: "20%",
-  //  background: "#fff",
+   //  background: "#fff",
    boxShadow: "0 12px 24px rgba(0,0,0,0.2)",
    position: "relative",
    zIndex: 2,
